@@ -15,8 +15,6 @@ import java.net.URL
 
 
 private val mStringsPopular = arrayOf<String>(
-
-
     "https://images4.alphacoders.com/754/754567.png",
     "https://i.pinimg.com/originals/98/09/ae/9809aee294a16549d98f79d3fb409e28.jpg",
     "https://images.8tracks.com/cover/i/012/134/972/vaporwave_aesthetic-987.jpg?rect=528,1,718,718&q=98&fm=jpg&fit=max&w=640&h=640",
@@ -29,12 +27,9 @@ private val mStringsPopular = arrayOf<String>(
     "https://i.pinimg.com/originals/98/09/ae/9809aee294a16549d98f79d3fb409e28.jpg",
     "https://images.8tracks.com/cover/i/012/134/972/vaporwave_aesthetic-987.jpg?rect=528,1,718,718&q=98&fm=jpg&fit=max&w=640&h=640",
     "https://i.redd.it/2as5mszzs3l11.png"
-
 )
 
-
 class PopularAdapter(private val mContext: Context) : BaseAdapter() {
-
 
     override fun getCount(): Int = mStringsPopular.size
 
@@ -55,20 +50,14 @@ class PopularAdapter(private val mContext: Context) : BaseAdapter() {
             imageView = convertView as ImageView
         }
 
-       // imageView.setImageResource(mThumbIds[position])
-       // val url = mStrings[position]
 
         GlideApp
             .with(parent)
             .load(mStringsPopular[position])
             .centerCrop()
-            //.override(100, 200)
             .placeholder(R.drawable.sample_3)
             .into(imageView)
 
         return imageView
     }
 }
-
-//
-

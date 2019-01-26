@@ -1,26 +1,27 @@
 package tk.zedlabs.vapourwave_wallpapers
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v4.view.ViewPager
-import android.support.design.widget.TabLayout
-import kotlinx.android.synthetic.main.activity_main.*
+import android.view.View
+import androidx.viewpager.widget.ViewPager
+import com.google.android.material.tabs.TabLayout
+import com.mikepenz.materialdrawer.DrawerBuilder
+import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
+import com.mikepenz.materialdrawer.Drawer
+import com.mikepenz.materialdrawer.model.SecondaryDrawerItem
+import com.mikepenz.materialdrawer.model.DividerDrawerItem
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
+import kotlinx.android.synthetic.main.app_bar.*
 
 
 class MainActivity : AppCompatActivity() {
-
-//    private var adapter: TabAdapter? = null
-//    private var tabLayout: TabLayout? = null
-//    private var viewPager: ViewPager? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val viewPager = findViewById<ViewPager>(R.id.viewPager)
+        val viewPager = findViewById<androidx.viewpager.widget.ViewPager>(R.id.viewPager)
         val tabLayout = findViewById<TabLayout>(R.id.tabLayout)
-
         val adapter = TabAdapter(supportFragmentManager)
 
         adapter.addFragment(PopularFragment(), "Popular")
@@ -29,12 +30,27 @@ class MainActivity : AppCompatActivity() {
         viewPager.adapter = adapter
         tabLayout.setupWithViewPager(viewPager)
 
-//        val popularFragment = PopularFragment()
-//        val fragmentManager = supportFragmentManager
-//        fragmentManager.beginTransaction()
-//            .add(R.id.main_wallpaper_list, popularFragment)
-//            .commit()
+        val item1 = PrimaryDrawerItem().withIdentifier(9).withName(R.string.drawer_item_welcome)
+        val item2 = SecondaryDrawerItem().withIdentifier(0).withName(R.string.drawer_item_popular)
+        val item3 = SecondaryDrawerItem().withIdentifier(98).withName(R.string.drawer_item_new)
 
+//create the drawer and remember the `Drawer` result object
+        val result = DrawerBuilder()
+            .withActivity(this)
+            .withToolbar(toolbar)
+            .addDrawerItems(
+                item1,
+                DividerDrawerItem(),
+                item2,
+                item3
+            )
+            .withOnDrawerItemClickListener(object : Drawer.OnDrawerItemClickListener {
+                override fun onItemClick(view: View, position: Int, drawerItem: IDrawerItem<*, *>): Boolean {
+                    viewPager.currentItem = drawerItem.identifier.toInt()
+                    return false
+                }
+            })
+            .build()
 
     }
 }

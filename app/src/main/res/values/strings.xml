@@ -3,4 +3,7 @@
 
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="drawer_item_new">New</string>
+    <string name="drawer_item_popular">Popular</string>
+    <string name="drawer_item_welcome">WELCOME</string>
 </resources>
