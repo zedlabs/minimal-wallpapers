@@ -6,7 +6,7 @@ https://i.stack.imgur.com/bqaBB.png
 https://i.stack.imgur.com/yIvdq.png
 https://i.stack.imgur.com/LXxAD.png
 
-libraries used:
-1.materialDrawer
-2.photoView
-3.Glide
+* Libraries Used
+    * Material Drawer
+    * Glide
+    * AAC
