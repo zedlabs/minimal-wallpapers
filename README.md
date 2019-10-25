@@ -1,5 +1,5 @@
 # minimal-wallpapers
-native android app to browse and download beautiful and minimal wallpapers
+native android app to browse and apply wallpapers to android devices
 
 screeenshots:
 https://i.stack.imgur.com/bqaBB.png
